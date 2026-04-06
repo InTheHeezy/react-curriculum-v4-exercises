@@ -9,7 +9,6 @@ export default function StudentWork() {
     { id: 1, hobby: 'Video games' },
     { id: 2, hobby: 'Trading Card games' },
     { id: 3, hobby: 'Anime' },
-    { id: 4, hobby: 'Movies' },
   ];
 
   const header = 'Hello my name is ' + name + '.';
