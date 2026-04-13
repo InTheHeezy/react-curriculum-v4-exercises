@@ -6,8 +6,8 @@ function SnackList() {
     { rank: 1, name: 'Chips' },
   ];
 
-  //Sort in descending order
-  var sortedSnacks = snacks.toSorted((a, b) => a.rank - b.rank);
+  //Sorted in descending order
+  let sortedSnacks = snacks.toSorted((a, b) => a.rank - b.rank);
 
   return (
     <ul>
