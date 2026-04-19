@@ -3,6 +3,7 @@
 //Impport components here
 import BugEffectLoop from './BugEffectLoop';
 import BugMutatedState from './BugMutatedState';
+import BugProps from './BugProps';
 
 export default function StudentWork() {
   return (
@@ -11,6 +12,7 @@ export default function StudentWork() {
       <div>
         <BugEffectLoop />
         <BugMutatedState />
+        <BugProps />
       </div>
     </div>
   );
