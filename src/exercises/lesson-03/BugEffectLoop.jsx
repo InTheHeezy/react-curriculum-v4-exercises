@@ -15,10 +15,25 @@ export default function BugEffectLoop() {
 
   useEffect(() => {
     setCount(count + 1);
-  });
+  }, []);
 
   return <p>Bug 1 Count: {count}</p>;
 }
 
 // Explanation:
 // (Write your explanation here)
+/*
+    
+    BUG - Explanation
+    Since there is no event listener to determine when 
+    the DOM should render, useEffect is constantly running.
+    This causes the DOM to render without limits. 
+    Because of that the counter increases 
+    by 1 everytime its rendering.
+     
+    FIX - Explanation
+    To make useEffect only render once without
+    an event listener, I added an empty
+    dependency array which tells React that
+    useEffect will not change any values.
+  */
