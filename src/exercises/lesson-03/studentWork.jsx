@@ -2,6 +2,7 @@
 //Exercise: React Bug Hunt – Fix the broken components in this folder
 //Impport components here
 import BugEffectLoop from './BugEffectLoop';
+import BugMutatedState from './BugMutatedState';
 
 export default function StudentWork() {
   return (
@@ -9,8 +10,8 @@ export default function StudentWork() {
       {/* add components here */}
       <div>
         <BugEffectLoop />
+        <BugMutatedState />
       </div>
-      <p>Student output will go here</p>
     </div>
   );
 }
