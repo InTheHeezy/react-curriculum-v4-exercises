@@ -11,12 +11,12 @@
 
   Use the commented "Explanation" section at the bottom of this lesson's components.
 */
-
+import { useState } from 'react';
 export default function BugProps({ name = 'friend' }) {
-  let message = 'Hello, ' + name;
+  let [message, setMessage] = useState('Hello, ' + name);
 
   function handleChange() {
-    message = 'Hi, ' + name + '!';
+    setMessage((message) => 'Hi, ' + name + '!');
   }
 
   return (
@@ -29,3 +29,15 @@ export default function BugProps({ name = 'friend' }) {
 
 // Explanation:
 // (Write your explanation here)
+
+/*
+
+  BUG - Explanation
+  Did not use useState so the webpage did not dynamically 
+  update this component.
+
+  Fix - Explanation
+  Implemented useState to allow the message on the 
+  webpage to change when the button was clicked.
+
+*/
