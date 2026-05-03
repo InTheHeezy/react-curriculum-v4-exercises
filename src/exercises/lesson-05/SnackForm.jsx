@@ -56,7 +56,6 @@ export default function SnackForm({
           value={name}
           onChange={(e) => setName(e.target.value)}
           onFocus={() => setTouched((prev) => ({ ...prev, name: true }))}
-          required
           className={styles['field-input']}
           placeholder="Enter snack name"
         />
@@ -70,7 +69,6 @@ export default function SnackForm({
           value={rating}
           onChange={(e) => setRating(e.target.value)}
           onFocus={() => setTouched((prev) => ({ ...prev, rating: true }))}
-          required
           min="1"
           max="5"
           className={styles['field-input']}
