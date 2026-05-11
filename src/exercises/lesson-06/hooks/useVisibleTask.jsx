@@ -1,4 +1,4 @@
-export const useFilter = (tasks, filter) => {
+export const useVisibleTask = (tasks, filter) => {
   let visibleTasks = tasks;
 
   if (filter === 'completed') {

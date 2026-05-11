@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useStudentWork } from './hooks/useStudentWork';
-import { useFilter } from './hooks/useFilter';
+import { useVisibleTask } from './hooks/useVisibleTask';
 import { isLoading } from './utils/isLoading';
 
 export default function StudentWork() {
@@ -11,7 +11,7 @@ export default function StudentWork() {
   const loadTasks = isLoading(loading);
   if (loadTasks) return loadTasks;
 
-  let visibleTasks = useFilter(tasks, filter);
+  let visibleTasks = useVisibleTask(tasks, filter);
 
   return (
     <div>
