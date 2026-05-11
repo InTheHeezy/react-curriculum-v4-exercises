@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useStudentWork } from './hooks/useStudentWork';
 import { useFilter } from './hooks/useFilter';
+import { isLoading } from './utils/isLoading';
 
 export default function StudentWork() {
   const { tasks, setTasks, filter, setFilter, loading, setLoading } =
     useStudentWork();
 
-  if (loading) {
-    return <p>Loading tasks...</p>;
-  }
+  const loadTasks = isLoading(loading);
+  if (loadTasks) return loadTasks;
 
   let visibleTasks = useFilter(tasks, filter);
 
