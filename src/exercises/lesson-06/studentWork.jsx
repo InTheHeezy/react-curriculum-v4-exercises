@@ -3,6 +3,7 @@ import { useStudentWork } from './hooks/useStudentWork';
 import { useVisibleTask } from './hooks/useVisibleTask';
 import { isLoading } from './utils/isLoading';
 import { FilterButton } from './components/FilterButton';
+import { VisibleTasks } from './components/VisibleTasks';
 
 export default function StudentWork() {
   const { tasks, setTasks, filter, setFilter, loading, setLoading } =
@@ -23,13 +24,8 @@ export default function StudentWork() {
         <FilterButton filter={filter} setFilter={setFilter} options={options} />
       </div>
 
-      {/* #5: Inline list rendering */}
       <ul>
-        {visibleTasks.map((task) => (
-          <li key={task.id}>
-            {task.title} {task.completed ? '✅' : '⏳'}
-          </li>
-        ))}
+        <VisibleTasks visibleTasks={visibleTasks} />
       </ul>
     </div>
   );

@@ -5,7 +5,6 @@ export const useStudentWork = () => {
   const [filter, setFilter] = useState('all');
   const [loading, setLoading] = useState(true);
 
-  //  #1: Data fetching + state + UI logic all mixed together
   useEffect(() => {
     const timeout = setTimeout(() => {
       setTasks([
