@@ -7,6 +7,7 @@ export default function StudentWork() {
   const { tasks, setTasks, filter, setFilter, loading, setLoading } =
     useStudentWork();
 
+  // call helper, if !null return helper. else ignore
   const loadTasks = isLoading(loading);
   if (loadTasks) return loadTasks;
 
