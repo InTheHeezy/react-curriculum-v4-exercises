@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useStudentWork } from './hooks/useStudentWork';
 import { useVisibleTask } from './hooks/useVisibleTask';
 import { isLoading } from './utils/isLoading';
+import { FilterButton } from './components/FilterButton';
 
 export default function StudentWork() {
   const { tasks, setTasks, filter, setFilter, loading, setLoading } =
@@ -12,18 +13,14 @@ export default function StudentWork() {
   if (loadTasks) return loadTasks;
 
   let visibleTasks = useVisibleTask(tasks, filter);
+  let options = ['all', 'completed', 'pending'];
 
   return (
     <div>
-      {/* #3: Hardcoded UI, not reusable */}
       <h2>Welcome, Student</h2>
 
-      {/* #4: Repeated button JSX */}
       <div>
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
-        <button onClick={() => setFilter('pending')}>Pending</button>
-        <p>Current filter: {filter}</p>
+        <FilterButton filter={filter} setFilter={setFilter} options={options} />
       </div>
 
       {/* #5: Inline list rendering */}
