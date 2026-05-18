@@ -29,7 +29,7 @@ export async function getPosts() {
   // and return some JSON data.
   // You may delete this comment once you've finished the implementation.
   // eslint-disable-next-line no-unused-vars
-  const url = POSTS_ENDPOINT;
+  const url = POSTS_ENDPOINT + '?_limit=10';
 
   const response = await fetch(url);
   return response.json();
