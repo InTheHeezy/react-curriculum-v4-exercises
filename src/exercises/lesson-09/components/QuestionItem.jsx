@@ -43,9 +43,16 @@ export function QuestionItem({ question }) {
     setIsEditing(false);
   };
 
+  const handleCancel = () => {
+    setWorkingText(question.question);
+    setIsEditing(false);
+  };
+
   // TODO: Students will add delete functionality here
   const handleDelete = () => {
-    const confirmation = window.confirm('Are you sure you want to delete?');
+    const confirmation = window.confirm(
+      'Are you sure you want to delete this question?'
+    );
 
     if (confirmation) {
       dispatch({
