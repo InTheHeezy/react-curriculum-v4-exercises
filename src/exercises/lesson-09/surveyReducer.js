@@ -95,8 +95,6 @@ export function surveyReducer(state, action) {
     // ===== STUDENT IMPLEMENTATION TASKS =====
 
     case 'UPDATE_QUESTION_TEXT':
-      // TODO: Implement this action
-      //console.log('TODO: Implement UPDATE_QUESTION_TEXT action');
       return {
         ...state,
         questions: state.questions.map((q) =>
@@ -107,9 +105,21 @@ export function surveyReducer(state, action) {
       };
 
     case 'DELETE_QUESTION':
-      // TODO: Implement this action
       console.log('TODO: Implement DELETE_QUESTION action');
       return state;
+
+    case 'ADD_OPTION_TO_QUESTION':
+      return {
+        ...state,
+        questions: state.questions.map((q) =>
+          q.id === action.payload.id
+            ? {
+                ...q,
+                options: [...q.options, action.payload.newOption],
+              }
+            : q
+        ),
+      };
 
     default:
       return state;
