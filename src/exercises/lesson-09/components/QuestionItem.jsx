@@ -70,9 +70,14 @@ export function QuestionItem({ question }) {
         </span>
         <div className={styles['question-actions']}>
           {isEditing ? (
-            <button className={styles['save-btn']} onClick={handleSave}>
-              Save
-            </button>
+            <div className={styles['question-actions']}>
+              <button className={styles['save-btn']} onClick={handleSave}>
+                Save
+              </button>
+              <button className={styles['cancel-btn']} onClick={handleCancel}>
+                Cancel
+              </button>
+            </div>
           ) : (
             <button className={styles['edit-btn']} onClick={handleEdit}>
               Edit
