@@ -21,8 +21,6 @@ export function QuestionItem({ question }) {
 
   // TODO: Students will add edit functionality here
   const handleEdit = () => {
-    console.log('TODO: Implement edit functionality');
-    // Hint: Use SET_EDITING_QUESTION action
     dispatch({
       type: 'SET_EDITING_QUESTION',
       payload: { questionId: question.id },
@@ -32,8 +30,6 @@ export function QuestionItem({ question }) {
 
   // TODO: Students will add save functionality here
   const handleSave = () => {
-    console.log('TODO: Implement save functionality');
-    // Hint: Use UPDATE_QUESTION_TEXT action with workingText
     dispatch({
       type: 'UPDATE_QUESTION_TEXT',
       payload: { id: question.id, nextText: workingText },
@@ -60,7 +56,6 @@ export function QuestionItem({ question }) {
           Question Type: {formatQuestionType(question.type)}
         </span>
         <div className={styles['question-actions']}>
-          {/* TODO: Students add Edit and Delete buttons here */}
           {isEditing ? (
             <button className={styles['save-btn']} onClick={handleSave}>
               Save
@@ -76,7 +71,6 @@ export function QuestionItem({ question }) {
         </div>
       </div>
 
-      {/* TODO: Students will add conditional controlled form to edit question here */}
       <div className={styles['question-content']}>
         {isEditing ? (
           <input
