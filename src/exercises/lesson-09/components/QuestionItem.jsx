@@ -32,7 +32,7 @@ export function QuestionItem({ question }) {
   const handleSave = () => {
     dispatch({
       type: 'UPDATE_QUESTION_TEXT',
-      payload: { id: question.id, nextText: workingText },
+      payload: { id: question.id, newText: workingText },
     });
 
     dispatch({
