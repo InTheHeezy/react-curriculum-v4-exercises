@@ -111,14 +111,18 @@ export function surveyReducer(state, action) {
     case 'ADD_OPTION_TO_QUESTION':
       return {
         ...state,
-        questions: state.questions.map((q) =>
-          q.id === action.payload.id
-            ? {
-                ...q,
-                options: [...q.options, action.payload.newOption],
-              }
-            : q
-        ),
+        questions: state.questions.map((q) => {
+          if (
+            q.id === action.payload.questionId &&
+            q.type === QUESTION_TYPES.MULTIPLE_CHOICE
+          ) {
+            return {
+              ...q,
+              options: [...q.options, action.payload.optionText],
+            };
+          }
+          return q;
+        }),
       };
 
     default:
