@@ -105,8 +105,13 @@ export function surveyReducer(state, action) {
       };
 
     case 'DELETE_QUESTION':
-      console.log('TODO: Implement DELETE_QUESTION action');
-      return state;
+      return {
+        ...state,
+        // 3. Filter using loose inequality to prevent type mismatches
+        questions: (state.questions || []).filter(
+          (q) => q.id != action.payload.id
+        ),
+      };
 
     case 'ADD_OPTION_TO_QUESTION':
       return {
