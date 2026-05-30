@@ -10,6 +10,8 @@ export function QuestionItem({ question }) {
   const { dispatch } = useContext(SurveyContext);
 
   const [isEditing, setIsEditing] = useState(false);
+  const [newOptionText, setNewOptionText] = useState('');
+  const [workingOptions, setWorkingOptions] = useState(question.options || []);
 
   // Helper function to convert type to title case
   const formatQuestionType = (type) => {
@@ -62,6 +64,17 @@ export function QuestionItem({ question }) {
     }
   };
 
+  //Add option to multiple choice question
+  const handleAddOption = () => {
+    dispatch({
+      type: 'ADD_OPTION_TO_QUESTION',
+      payload: { id: question.id, optionText: newOptionText.trim() },
+    });
+
+    setWorkingOptions([...workingOptions, newOptionText.trim()]);
+    setNewOptionText('');
+  };
+
   return (
     <div className={styles['question-item']}>
       <div className={styles['question-header']}>
@@ -106,12 +119,30 @@ export function QuestionItem({ question }) {
         <div className={styles['options-section']}>
           <h4>Answer Options:</h4>
           <ul>
-            {question.options.map((option, index) => (
+            {workingOptions.map((option, index) => (
               <li key={index} className={styles['option-item']}>
                 <span className={styles['option-text']}>{option}</span>
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {isEditing && (
+        <div className={styles['add-option']}>
+          <input
+            type="text"
+            value={newOptionText}
+            className={styles['add-option input']}
+            onChange={(e) => setNewOptionText(e.target.value)}
+          />
+          <button
+            type="button"
+            className={styles['add-option button']}
+            onClick={handleAddOption}
+          >
+            Add Option
+          </button>
         </div>
       )}
     </div>
