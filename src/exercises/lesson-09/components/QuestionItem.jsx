@@ -68,10 +68,9 @@ export function QuestionItem({ question }) {
   const handleAddOption = () => {
     dispatch({
       type: 'ADD_OPTION_TO_QUESTION',
-      payload: { id: question.id, optionText: newOptionText.trim() },
+      payload: { questionId: question.id, optionText: newOptionText.trim() },
     });
 
-    setWorkingOptions([...workingOptions, newOptionText.trim()]);
     setNewOptionText('');
   };
 
@@ -83,14 +82,14 @@ export function QuestionItem({ question }) {
         </span>
         <div className={styles['question-actions']}>
           {isEditing ? (
-            <div className={styles['question-actions']}>
+            <>
               <button className={styles['save-btn']} onClick={handleSave}>
                 Save
               </button>
               <button className={styles['cancel-btn']} onClick={handleCancel}>
                 Cancel
               </button>
-            </div>
+            </>
           ) : (
             <button className={styles['edit-btn']} onClick={handleEdit}>
               Edit
@@ -119,48 +118,64 @@ export function QuestionItem({ question }) {
         <div className={styles['options-section']}>
           <h4>Answer Options:</h4>
           <ul>
-            {workingOptions.map((option, index) => (
-              <li key={index} className={styles['option-item']}>
+            {question.options.map((option, index) => (
+              <li key={`${option}-${index}`} className={styles['option-item']}>
                 {isEditing ? (
-                  <input
-                    type="text"
-                    className={styles['option-item']}
-                    value={option}
-                    onChange={(e) =>
-                      dispatch({
-                        type: 'UPDATE_OPTION_TEXT',
-                        payload: {
-                          questionId: question.id,
-                          optionIndex: index,
-                          newOptionText: e.target.value,
-                        },
-                      })
-                    }
-                  />
+                  <div>
+                    <input
+                      type="text"
+                      className={styles['option-item']}
+                      value={option}
+                      onChange={(e) =>
+                        dispatch({
+                          type: 'UPDATE_OPTION_TEXT',
+                          payload: {
+                            questionId: question.id,
+                            optionIndex: index,
+                            newOptionText: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                    <button
+                      className={styles['option-delete-btn']}
+                      onClick={(e) => {
+                        dispatch({
+                          type: 'DELETE_OPTION_FROM_QUESTION',
+                          payload: {
+                            questionId: question.id,
+                            optionIndex: index,
+                          },
+                        });
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 ) : (
                   <span className={styles['option-text']}>{option}</span>
                 )}
               </li>
             ))}
           </ul>
-        </div>
-      )}
 
-      {isEditing && (
-        <div className={styles['add-option']}>
-          <input
-            type="text"
-            value={newOptionText}
-            className={styles['add-option input']}
-            onChange={(e) => setNewOptionText(e.target.value)}
-          />
-          <button
-            type="button"
-            className={styles['add-option button']}
-            onClick={handleAddOption}
-          >
-            Add Option
-          </button>
+          {isEditing && (
+            <div className={styles['add-option']}>
+              <input
+                type="text"
+                value={newOptionText}
+                className={styles['add-option input']}
+                onChange={(e) => setNewOptionText(e.target.value)}
+              />
+              <button
+                type="button"
+                className={styles['add-option button']}
+                onClick={handleAddOption}
+              >
+                Add Option
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

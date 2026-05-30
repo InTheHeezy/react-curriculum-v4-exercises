@@ -107,7 +107,6 @@ export function surveyReducer(state, action) {
     case 'DELETE_QUESTION':
       return {
         ...state,
-        // 3. Filter using loose inequality to prevent type mismatches
         questions: (state.questions || []).filter(
           (q) => q.id != action.payload.id
         ),
@@ -149,6 +148,30 @@ export function surveyReducer(state, action) {
           }
         }),
       };
+
+    case 'DELETE_OPTION_FROM_QUESTION':
+      return {
+        ...state,
+        questions: state.questions.map((q) => {
+          if (
+            q.id == action.payload.questionId &&
+            q.type === QUESTION_TYPES.MULTIPLE_CHOICE
+          ) {
+            if (q.options.length <= 2) {
+              return q;
+            }
+
+            return {
+              ...q,
+              options: (q.options || []).filter(
+                (o, index) => index != action.payload.optionIndex
+              ),
+            };
+          }
+          return q;
+        }),
+      };
+
     default:
       return state;
   }
