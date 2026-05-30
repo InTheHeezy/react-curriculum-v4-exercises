@@ -130,6 +130,25 @@ export function surveyReducer(state, action) {
         }),
       };
 
+    case 'UPDATE_OPTION_TEXT':
+      return {
+        ...state,
+        questions: state.questions.map((q) => {
+          if (
+            q.id == action.payload.questionId &&
+            q.type === QUESTION_TYPES.MULTIPLE_CHOICE
+          ) {
+            return {
+              ...q,
+              options: q.options.map((option, index) =>
+                index === action.payload.optionIndex
+                  ? action.payload.newOptionText
+                  : option
+              ),
+            };
+          }
+        }),
+      };
     default:
       return state;
   }
