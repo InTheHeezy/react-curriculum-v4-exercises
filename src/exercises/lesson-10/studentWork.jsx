@@ -4,6 +4,8 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 
 import { products } from './data/products.js';
+import { Routes } from 'react-router-dom';
+import Home from './pages/Home.jsx';
 
 export default function StudentWork() {
   const [user, setUser] = useState({
@@ -43,7 +45,11 @@ export default function StudentWork() {
 
       <Header user={user} />
 
-      <main style={{ padding: 12 }}></main>
+      <main style={{ padding: 12 }}>
+        <Routes>
+          <Route path="/" element={<Home products={productsList} />} />
+        </Routes>
+      </main>
 
       <Footer />
     </div>
