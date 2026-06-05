@@ -4,8 +4,12 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 
 import { products } from './data/products.js';
-import { Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
+import Checkout from './pages/Checkout.jsx';
+import productDetails from './pages/ProductDetails.jsx';
+import NotFound from './pages/NotFound.jsx';
+import Account from './pages/Account.jsx';
 
 export default function StudentWork() {
   const [user, setUser] = useState({
@@ -47,7 +51,16 @@ export default function StudentWork() {
 
       <main style={{ padding: 12 }}>
         <Routes>
+          {user.isLoggedIn && (
+            <Route path="/account" element={<Account user={user} />} />
+          )}
           <Route path="/" element={<Home products={productsList} />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/products/:id"
+            element={<ProductDetails products={productsList} />}
+          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
