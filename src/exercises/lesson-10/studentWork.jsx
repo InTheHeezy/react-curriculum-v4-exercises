@@ -7,7 +7,7 @@ import { products } from './data/products.js';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Checkout from './pages/Checkout.jsx';
-import productDetails from './pages/ProductDetails.jsx';
+import ProductDetails from './pages/ProductDetails.jsx';
 import NotFound from './pages/NotFound.jsx';
 import Account from './pages/Account.jsx';
 
