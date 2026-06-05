@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 
+import { products } from './data/products.js';
+
 export default function StudentWork() {
   const [user, setUser] = useState({
     isLoggedIn: true,
     firstName: 'Avery',
   });
+
+  const [productsList, setProductsList] = useState(products);
 
   function toggleLogin() {
     setUser((u) => ({ ...u, isLoggedIn: !u.isLoggedIn }));
