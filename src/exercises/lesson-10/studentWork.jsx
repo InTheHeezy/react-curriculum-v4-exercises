@@ -52,13 +52,13 @@ export default function StudentWork() {
       <main style={{ padding: 12 }}>
         <Routes>
           <Route path="/" element={<Home products={productsList} />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route
-            path="/products/:id"
+            path="products/:id"
             element={<ProductDetails products={productsList} />}
           />
           {user.isLoggedIn && (
-            <Route path="/account" element={<Account user={user} />} />
+            <Route path="account" element={<Account user={user} />} />
           )}
           <Route path="*" element={<NotFound />} />
         </Routes>

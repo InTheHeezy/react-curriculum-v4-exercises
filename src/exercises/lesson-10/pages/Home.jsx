@@ -25,7 +25,7 @@ export default function Home({ products }) {
               background: '#fff',
             }}
           >
-            <Link to={`/products/${p.id}`}>
+            <Link to={`products/${p.id}`}>
               <img
                 src={p.previewImage}
                 alt={p.name}

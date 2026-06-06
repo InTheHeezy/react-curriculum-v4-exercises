@@ -1,9 +1,9 @@
-import { Link, useParams } from 'react-router';
+import { Link, useParams } from 'react-router-dom';
 
 export default function ProductDetails({ products }) {
   const { id } = useParams();
 
-  const product = products.find((p) => p.id == id);
+  const product = products.find((p) => p.id === id);
 
   return (
     <section>

@@ -18,11 +18,11 @@ export default function Header({ user }) {
         <NavLink to="/" style={navLinkStyles}>
           Home
         </NavLink>
-        <NavLink to="/checkout" style={navLinkStyles}>
+        <NavLink to="checkout" style={navLinkStyles}>
           Checkout
         </NavLink>
         {user.isLoggedIn && (
-          <NavLink to="/account" style={navLinkStyles}>
+          <NavLink to="account" style={navLinkStyles}>
             Account
           </NavLink>
         )}
